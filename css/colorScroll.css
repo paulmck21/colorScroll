@@ -20,4 +20,12 @@
   .row .rgb {
     top: 8em; }
 
+#hex {
+  cursor: pointer; }
+
+button {
+  height: 100px;
+  width: 100px;
+  background-color: red; }
+
 /*# sourceMappingURL=colorScroll.css.map */

@@ -117,4 +117,34 @@ function writeValues(red, green, blue, hexVal, rgbVal){
 	rgbTitle.innerHTML = rgbVal;
 }
 
+var hexBtn = document.getElementById('hexDiv');
+var hexText = document.getElementById('hexTitle');
+var clipboardHex = new Clipboard(hexBtn, {
+	target: function() {
+            return hexText;
+        }
+});
 
+var rgbBtn = document.getElementById('rgbDiv');
+var rgbText = document.getElementById('rgbTitle');
+var clipboardRgb = new Clipboard(rgbBtn, {
+	target: function() {
+            return rgbText;
+        }
+});
+
+$(document).ready(function (){
+
+	$('[data-toggle="tooltip"]').tooltip();
+
+	$('#hexDiv, #rgbDiv').tooltip({title: "copied to clipboard", trigger: "click"}); 
+		
+			
+
+	$('#hexDiv, #rgbDiv').on('show.bs.tooltip', function(){
+		setTimeout(function(){
+			$('#hexDiv, #rgbDiv').tooltip('hide')
+	}, 1000)
+	})
+})
+   
