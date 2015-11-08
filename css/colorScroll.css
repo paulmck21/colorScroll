@@ -16,7 +16,8 @@
       .row h1 {
         font-size: 4em; } }
   .row .hex {
-    top: 3em; }
+    top: 3em;
+    cursor: pointer; }
   .row .rgb {
     top: 8em; }
 
