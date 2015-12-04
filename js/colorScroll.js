@@ -67,8 +67,10 @@ function assignLetters(color){
 }
 
 // //On loading and on scrolling call the scrolled function
-window.onload = function() {rgbScroll() 
-							setDivHeight() }
+window.onload = function() {rgbScroll(); 
+							setDivHeight();
+							t = setTimeout(function(){fadeOutInfo()},3000)
+							}
 // window.onscroll = function() {scrolled() }
 
 // On scrolling the red Div, call scrolled
@@ -78,6 +80,12 @@ var blueDiv = document.getElementById("blueDiv");
 redDiv.onscroll = function() {rgbScroll()}
 greenDiv.onscroll = function() {rgbScroll()}
 blueDiv.onscroll = function() {rgbScroll()}
+
+var infoButton = document.getElementById("infoButton");
+var infoDiv = document.getElementById("infoDiv");
+infoButton.onclick = function() {fadeInInfo()};
+infoDiv.onclick = function() {clearTimeout(t);
+								fadeOutInfo()};
 
 function rgbScroll() {
 
@@ -110,10 +118,9 @@ function rgbScroll() {
 
 	//Call function to write values on screen
 	writeValues(redValue, greenValue, blueValue, hexVal, rgbVal);
-	
-	
-
 }
+
+//function to set the height of the scrollable area depending on your screensize
 
 function setDivHeight() {
 	var screenHeight = screen.height;
@@ -127,34 +134,44 @@ function setDivHeight() {
 	document.getElementById("blueInside").setAttribute('style',newHeightStr);
 }
 
-//Maybe I should cut down this function as it grew a tad larger than I had anticipated.
-//Function to assign rgb values based on the distance from the top of the document.
-function scrolled () {
-	var docBody = document.body;
-	var dist = document.getElementById("body").scrollTop;
-	console.log("dist is " + dist);
+//function to fade out the infoDiv and fade in the infoButton
+
+function fadeOutInfo() {
+	var infoDiv = document.getElementById("infoDiv");
+	var infoButton = document.getElementById("infoButton");
 	
-	//assigning random values to r,g and b
-	//assuring they are under 255 and are integers
-	var red = Math.floor((dist / 2) % 255);
-	var green = Math.floor((dist / 3) % 255);
-	var blue = Math.floor((dist / 4) % 255);
+		FX.fadeOut(infoDiv, {
+        duration: 2000,
+        complete: infoButton.setAttribute('style','z-index:101')
+    	})
+    	FX.fadeIn(infoButton, {
+        duration: 2000,
+        complete: setTimeout(function(){
+        	infoDiv.setAttribute('style','z-index:-10')
+        },2000) 
+    	})
+    	
 
-
-
-
-
-	//creating rgb string and cconverting it to hex
-	var rgbVal = 'rgb (' + red + ',' + green + ',' + blue + ')';
-	var hexVal = convertToHex(rgbVal);
-
-	//change the background color to hexVal
-	document.getElementById("body").style.backgroundColor = hexVal;
-
-	//Call function to write values on screen
-	writeValues(red, green, blue, hexVal, rgbVal);
-	
 }
+
+function fadeInInfo() {
+	var infoDiv = document.getElementById("infoDiv");
+	var infoButton = document.getElementById("infoButton");
+	
+		FX.fadeIn(infoDiv, {
+        duration: 2000,
+        complete: infoButton.setAttribute('style','z-index:-10')
+    	})
+    	FX.fadeOut(infoButton, {
+        duration: 2000,
+        complete: setTimeout(function(){
+        	infoDiv.setAttribute('style','z-index:101')
+        },2000) 
+    	})
+
+    	
+}
+
 
 //function to write hex and rgb values in the DOM
 function writeValues(red, green, blue, hexVal, rgbVal){
