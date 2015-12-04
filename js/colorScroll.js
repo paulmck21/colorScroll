@@ -90,9 +90,16 @@ function rgbScroll() {
 	var blueNum = document.getElementById("blueNum");
 	var blueDist = document.getElementById("blueDiv").scrollTop;
 	
-	var redValue = Math.floor(redDist / 10) % 256;
-	var greenValue = Math.floor(greenDist / 10) % 256;
-	var blueValue = Math.floor(blueDist / 10) % 256;
+	var redMath = Math.floor(redDist / 10);
+	var redValue = redMath >= 255 ? 255 : redMath;
+
+	console.log("redMath is " + redMath + " and redValue is " + redValue)
+
+	var greenMath = Math.floor(greenDist / 10);
+	var greenValue = greenMath >= 255 ? 255 : greenMath;
+
+	var blueMath = Math.floor(blueDist / 10);
+	var blueValue = blueMath >= 255 ? 255 : blueMath;
 
 	//creating rgb string and cconverting it to hex
 	var rgbVal = 'rgb (' + redValue + ',' + greenValue + ',' + blueValue + ')';
