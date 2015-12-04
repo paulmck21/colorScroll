@@ -81,11 +81,11 @@ redDiv.onscroll = function() {rgbScroll()}
 greenDiv.onscroll = function() {rgbScroll()}
 blueDiv.onscroll = function() {rgbScroll()}
 
-var infoButton = document.getElementById("infoButton");
-var infoDiv = document.getElementById("infoDiv");
-infoButton.onclick = function() {fadeInInfo()};
-infoDiv.onclick = function() {clearTimeout(t);
-								fadeOutInfo()};
+// var infoButton = document.getElementById("infoButton");
+// var infoDiv = document.getElementById("infoDiv");
+// infoButton.onclick = function() {fadeInInfo()};
+// infoDiv.onclick = function() {clearTimeout(t);
+// 								fadeOutInfo()};
 
 function rgbScroll() {
 
@@ -136,41 +136,41 @@ function setDivHeight() {
 
 //function to fade out the infoDiv and fade in the infoButton
 
-function fadeOutInfo() {
-	var infoDiv = document.getElementById("infoDiv");
-	var infoButton = document.getElementById("infoButton");
+// function fadeOutInfo() {
+// 	var infoDiv = document.getElementById("infoDiv");
+// 	var infoButton = document.getElementById("infoButton");
 	
-		FX.fadeOut(infoDiv, {
-        duration: 2000,
-        complete: infoButton.setAttribute('style','z-index:101')
-    	})
-    	FX.fadeIn(infoButton, {
-        duration: 2000,
-        complete: setTimeout(function(){
-        	infoDiv.setAttribute('style','z-index:-10')
-        },2000) 
-    	})
+// 		FX.fadeOut(infoDiv, {
+//         duration: 2000,
+//         complete: infoButton.setAttribute('style','z-index:101')
+//     	})
+//     	FX.fadeIn(infoButton, {
+//         duration: 2000,
+//         complete: setTimeout(function(){
+//         	infoDiv.setAttribute('style','z-index:-10')
+//         },2000) 
+//     	})
     	
 
-}
+// }
 
-function fadeInInfo() {
-	var infoDiv = document.getElementById("infoDiv");
-	var infoButton = document.getElementById("infoButton");
+// function fadeInInfo() {
+// 	var infoDiv = document.getElementById("infoDiv");
+// 	var infoButton = document.getElementById("infoButton");
 	
-		FX.fadeIn(infoDiv, {
-        duration: 2000,
-        complete: infoButton.setAttribute('style','z-index:-10')
-    	})
-    	FX.fadeOut(infoButton, {
-        duration: 2000,
-        complete: setTimeout(function(){
-        	infoDiv.setAttribute('style','z-index:101')
-        },2000) 
-    	})
+// 		FX.fadeIn(infoDiv, {
+//         duration: 2000,
+//         complete: infoButton.setAttribute('style','z-index:-10')
+//     	})
+//     	FX.fadeOut(infoButton, {
+//         duration: 2000,
+//         complete: setTimeout(function(){
+//         	infoDiv.setAttribute('style','z-index:101')
+//         },2000) 
+//     	})
 
     	
-}
+// }
 
 
 //function to write hex and rgb values in the DOM
