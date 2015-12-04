@@ -66,9 +66,59 @@ function assignLetters(color){
 	
 }
 
-//On loading and on scrolling call the scrolled function
-window.onload = function() {scrolled() }
-window.onscroll = function() {scrolled() }
+// //On loading and on scrolling call the scrolled function
+window.onload = function() {rgbScroll() 
+							setDivHeight() }
+// window.onscroll = function() {scrolled() }
+
+// On scrolling the red Div, call scrolled
+var redDiv = document.getElementById("redDiv");
+var greenDiv = document.getElementById("greenDiv");
+var blueDiv = document.getElementById("blueDiv");
+redDiv.onscroll = function() {rgbScroll()}
+greenDiv.onscroll = function() {rgbScroll()}
+blueDiv.onscroll = function() {rgbScroll()}
+
+function rgbScroll() {
+
+	var redNum = document.getElementById("redNum");
+	var redDist = document.getElementById("redDiv").scrollTop;
+
+	var greenNum = document.getElementById("greenNum");
+	var greenDist = document.getElementById("greenDiv").scrollTop;
+
+	var blueNum = document.getElementById("blueNum");
+	var blueDist = document.getElementById("blueDiv").scrollTop;
+	
+	var redValue = Math.floor(redDist / 10) % 256;
+	var greenValue = Math.floor(greenDist / 10) % 256;
+	var blueValue = Math.floor(blueDist / 10) % 256;
+
+	//creating rgb string and cconverting it to hex
+	var rgbVal = 'rgb (' + redValue + ',' + greenValue + ',' + blueValue + ')';
+	var hexVal = convertToHex(rgbVal);
+
+	//change the background color to hexVal
+	document.getElementById("body").style.backgroundColor = hexVal;
+
+	//Call function to write values on screen
+	writeValues(redValue, greenValue, blueValue, hexVal, rgbVal);
+	
+	
+
+}
+
+function setDivHeight() {
+	var screenHeight = screen.height;
+	var newHeight = parseInt(screen.height) + 2540;
+	var newHeightStr = 'height:' + newHeight.toString() + "px"
+
+	console.log("newHeightStr is " + newHeightStr)
+
+	document.getElementById("redInside").setAttribute('style',newHeightStr);
+	document.getElementById("greenInside").setAttribute('style',newHeightStr);
+	document.getElementById("blueInside").setAttribute('style',newHeightStr);
+}
 
 //Maybe I should cut down this function as it grew a tad larger than I had anticipated.
 //Function to assign rgb values based on the distance from the top of the document.
@@ -117,6 +167,8 @@ function writeValues(red, green, blue, hexVal, rgbVal){
 	rgbTitle.innerHTML = rgbVal;
 }
 
+//Enable a click to copy to clipboard function using  the clipboard.js plugin
+
 var hexBtn = document.getElementById('hexDiv');
 var hexText = document.getElementById('hexTitle');
 var clipboardHex = new Clipboard(hexBtn, {
@@ -132,6 +184,9 @@ var clipboardRgb = new Clipboard(rgbBtn, {
             return rgbText;
         }
 });
+
+//using jQuery just for bootstrap's tooptip function so 
+//we can display clicked when the colour values are clicked
 
 $(document).ready(function (){
 

@@ -3,7 +3,7 @@ $mycolor: #333;
 $breaksmall: 768px;
 $breakmedium: 992px;
 $breaklarge: 1024px;
-$bodyheight: 65536px;
+$bodyheight: 100vh;
 
 #body {
 	background-color: $mycolor;
@@ -14,7 +14,7 @@ $bodyheight: 65536px;
 .row {
 	height: 10em;
 	position: fixed;
-	max-width: 100vw;
+	width: 100vw;
 	// margin-left: auto;
 	// margin-right: auto;
 	h1 {
@@ -28,7 +28,9 @@ $bodyheight: 65536px;
 	}
 	.hex {
 		top: 3em;
+		left: 1em;
 		cursor: pointer;
+		z-index: 100;
 	}
 	.rgb {
 		top: 8em;
@@ -45,3 +47,47 @@ button {
 	width: 100px;
 	background-color: red;
 }
+
+#rgbDiv {
+	
+
+
+}
+
+#colorBoxes {
+	margin-top: 2em;
+	width: 100%;
+	height: 100vh;
+	background-color: transparent;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	
+	
+
+	.colorBox {
+		display: inline-block;
+		width: 32%;
+		height: 100vh;
+		overflow: scroll;
+	}
+
+	p {
+		position: relative;
+		font-size: 2em;
+		display: inline-block;
+	}
+}
+.inside {
+	width: 100%;
+	
+}
+
+#redInside {
+	height: 2560px;
+}
+
+::-webkit-scrollbar {
+		width: 0px;
+		background-color: transparent;
+	}
