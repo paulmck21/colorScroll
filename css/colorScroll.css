@@ -14,7 +14,7 @@
         font-size: 7em; } }
     @media (max-width: 768px) {
       .row h1 {
-        font-size: 4em; } }
+        font-size: 3em; } }
   .row .hex {
     top: 3em;
     left: 1em;
