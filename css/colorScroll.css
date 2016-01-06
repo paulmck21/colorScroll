@@ -50,7 +50,8 @@ button {
     display: inline-block; }
 
 .inside {
-  width: 100%; }
+  width: 100%;
+  height: 5000px; }
 
 #redInside {
   height: 2560px; }
@@ -83,5 +84,13 @@ button {
   right: 0.5em;
   color: white;
   z-index: 201; }
+
+.colorTags {
+  position: fixed;
+  bottom: 0.5em;
+  margin-left: 1em;
+  z-index: -10; }
+  .colorTags > span {
+    font-size: 2em; }
 
 /*# sourceMappingURL=colorScroll.css.map */

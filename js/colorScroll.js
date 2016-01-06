@@ -71,7 +71,7 @@ window.onload = function() {rgbScroll();
 							setDivHeight();
 							t = setTimeout(function(){fadeOutInfo()},3000)
 							}
-// window.onscroll = function() {scrolled() }
+window.onscroll = function() {scrolled() }
 
 // On scrolling the red Div, call scrolled
 var redDiv = document.getElementById("redDiv");
@@ -101,8 +101,6 @@ function rgbScroll() {
 	var redMath = Math.floor(redDist / 10);
 	var redValue = redMath >= 255 ? 255 : redMath;
 
-	console.log("redMath is " + redMath + " and redValue is " + redValue)
-
 	var greenMath = Math.floor(greenDist / 10);
 	var greenValue = greenMath >= 255 ? 255 : greenMath;
 
@@ -118,6 +116,45 @@ function rgbScroll() {
 
 	//Call function to write values on screen
 	writeValues(redValue, greenValue, blueValue, hexVal, rgbVal);
+
+	//hide or display arrows 
+	var redUp = document.getElementById("redUp");
+	var redDown = document.getElementById("redDown");
+	var greenUp = document.getElementById("greenUp");
+	var greenDown = document.getElementById("greenDown");
+	var blueUp = document.getElementById("blueUp");
+	var blueDown = document.getElementById("blueDown");
+
+	//change visibility of arrows for red
+	
+	if (redValue < 1){
+		redUp.style.opacity = "0";
+		
+		
+	} else if (redValue < 254) {
+		redUp.style.opacity = "1";
+		redDown.style.opactity = "1";
+	} else {
+		redDown.style.opacity = "0";
+	}
+	//change visibility of arrows for green
+	if (greenValue < 1){
+		greenUp.style.opacity = "0";
+	} else if (greenValue < 254) {
+		greenUp.style.opacity = "1";
+		greenDown.style.opacity = "1";
+	} else {
+		greenDown.style.opacity = "0";
+	}
+	//change visibility of arrows for blue
+	if (blueValue < 1){
+		blueUp.style.opacity = "0";
+	} else if (blueValue < 254) {
+		blueUp.style.opacity = "1";
+		blueDown.style.opacity = "1";
+	} else {
+		blueDown.style.opacity = "0";
+	}
 }
 
 //function to set the height of the scrollable area depending on your screensize
