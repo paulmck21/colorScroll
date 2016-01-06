@@ -129,11 +129,9 @@ function rgbScroll() {
 	
 	if (redValue < 1){
 		redUp.style.opacity = "0";
-		
-		
 	} else if (redValue < 254) {
 		redUp.style.opacity = "1";
-		redDown.style.opactity = "1";
+		redDown.style.opacity = "1";
 	} else {
 		redDown.style.opacity = "0";
 	}
